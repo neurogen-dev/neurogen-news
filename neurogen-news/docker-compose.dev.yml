@@ -1,0 +1,68 @@
+version: '3.8'
+
+# Development override - use with: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend:/app
+      - /app/vendor
+    environment:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=debug
+    ports:
+      - "8080:8080"
+    command: ["go", "run", "./cmd/server"]
+
+  # Frontend dev server (separate)
+  frontend:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    command: ["npm", "run", "dev", "--", "--host"]
+    environment:
+      - VITE_API_URL=http://localhost:8080/api/v1
+
+  postgres:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  meilisearch:
+    ports:
+      - "7700:7700"
+    environment:
+      - MEILI_ENV=development
+
+  # Adminer for database management
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    networks:
+      - neurogen-network
+
+  # Redis Commander for Redis management  
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8082:8081"
+    depends_on:
+      - redis
+    networks:
+      - neurogen-network
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Neurogen.News — медиа о нейросетях и AI. Гайды, обзоры, новости и инструменты для работы с искусственным интеллектом." />
+    <meta name="theme-color" content="#6366F1" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Neurogen.News" />
+    <meta property="og:title" content="Neurogen.News — Всё о нейросетях" />
+    <meta property="og:description" content="Медиа о нейросетях и AI. Гайды, обзоры, новости и инструменты для работы с искусственным интеллектом." />
+    <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Neurogen.News — Всё о нейросетях" />
+    <meta name="twitter:description" content="Медиа о нейросетях и AI. Гайды, обзоры, новости и инструменты для работы с искусственным интеллектом." />
+    <meta name="twitter:image" content="/og-image.png" />
+    
+    <!-- Preconnect to important third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Velvet Glass Fonts: Outfit (body) + Playfair Display (headings) + JetBrains Mono (code) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    
+    <title>Neurogen.News — Всё о нейросетях</title>
+    
+    <!-- Prevent FOUC (Flash of Unstyled Content) -->
+    <script>
+      // Check for dark mode preference
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+  </head>
+  <body class="antialiased">
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

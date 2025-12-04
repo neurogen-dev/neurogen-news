@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Frontend
+frontend/dist/
+frontend/.vite/
+*.local
+
+# Backend
+backend/web/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Test
+coverage.out
+coverage.html
+*.test
+*.prof
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Uploads (for development)
+uploads/*
+!uploads/.gitkeep
+
+# Database
+*.sql.backup
+*.dump
+
+# Docker
+docker-compose.override.yml
+
+# Security
+*.pem
+*.key
+*.crt
+secrets/
+
